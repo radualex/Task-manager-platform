@@ -1,15 +1,15 @@
-import * as React from "react";
+import React, { Component } from "react";
 import "./app.scss";
+import { Routes } from "../routes";
 
-import { Dashboard } from "../Dashboard/dashboard";
 import { Navigation } from "../Navigation/navigation";
 
-export class App extends React.Component {
+export class App extends Component {
   render() {
     return (
       <div className="container">
         <Navigation />
-        <Dashboard name="Radu"></Dashboard>
+        <Routes />
       </div>
     );
   }

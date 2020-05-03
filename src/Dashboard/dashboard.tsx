@@ -1,12 +1,8 @@
-import * as React from "react";
+import React, { Component } from "react";
 import "./dashboard.scss";
 
-export interface DashboardProps {
-  name: string;
-}
-
-export class Dashboard extends React.Component<DashboardProps, {}> {
+export class Dashboard extends Component {
   render() {
-    return <h1>Dashboard {this.props.name}</h1>;
+    return <h1>Dashboard </h1>;
   }
 }
