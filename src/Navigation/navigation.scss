@@ -1,0 +1,5 @@
+@import "../variables.scss";
+
+.navigation {
+  background-color: map-get($colors, primary);
+}
