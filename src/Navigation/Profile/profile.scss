@@ -1,0 +1,22 @@
+@import "../../variables.scss";
+
+.profile {
+  display: inline-flex;
+  align-items: center;
+  margin: 1rem 0 2rem 0;
+  
+  div {
+    display: grid;
+    grid-row-gap: 0.1rem;
+    margin: 0 1rem;
+  }
+}
+
+.profile__name {
+    font-size: 14px;
+}
+
+.profile__email {
+  font-size: 12px;
+  color: map-get($colors, neutral5);
+}

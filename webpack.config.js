@@ -96,13 +96,10 @@ module.exports = {
         ],
       },
       {
-        test: /\.svg$/,
+        test: /\.(png|jp(e*)g|svg|gif)$/,
         use: [
           {
-            loader: "svg-url-loader",
-            options: {
-              limit: 10000,
-            },
+            loader: "file-loader",
           },
         ],
       },
