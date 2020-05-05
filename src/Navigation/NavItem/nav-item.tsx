@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./nav-item.scss";
 
@@ -9,14 +9,18 @@ interface NavItemProps {
   name: string;
 }
 
-//TODO: style menu with neutral5 and neutral4:hover as colors.
 export class NavItem extends Component<NavItemProps> {
   render() {
     return (
-      <div>
-        <this.props.logo />
-        <Link to={this.props.route}>{this.props.name}</Link>
-      </div>
+      <NavLink
+        exact
+        to={this.props.route}
+        className="link"
+        activeClassName="selected"
+      >
+        <this.props.logo className="logo" />
+        {this.props.name}
+      </NavLink>
     );
   }
 }
