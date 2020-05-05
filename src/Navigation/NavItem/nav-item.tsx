@@ -17,12 +17,7 @@ interface NavItemState {
 }
 
 export class NavItem extends Component<NavItemProps, NavItemState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isActive: false,
-    };
-  }
+  readonly state = { isActive: false };
 
   render() {
     return (
@@ -50,16 +45,18 @@ export class NavItem extends Component<NavItemProps, NavItemState> {
           <this.props.logo className="logo" />
           {this.props.name}
         </NavLink>
-        {this.state.isActive
-          ? this.props.options.map((option) => (
-              <Option
-                key={option.text.toLowerCase()}
-                color={option.color}
-                text={option.text}
-                hash={option.hash}
-              ></Option>
-            ))
-          : ""}
+        <div className="options">
+          {this.state.isActive
+            ? this.props.options.map((option) => (
+                <Option
+                  key={option.text.toLowerCase()}
+                  color={option.color}
+                  text={option.text}
+                  hash={option.hash}
+                ></Option>
+              ))
+            : ""}
+        </div>
       </div>
     );
   }

@@ -13,7 +13,7 @@ export class Option extends Component<OptionProps> {
   render() {
     return (
       <a href={`#${this.props.hash}`} className="option">
-        <FaRegCircle color={this.props.color} size="0.5rem" />
+        <FaRegCircle color={this.props.color} className="circle" />
         <span>{this.props.text}</span>
       </a>
     );
