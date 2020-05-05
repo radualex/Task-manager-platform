@@ -1,13 +1,4 @@
 import React, { Component } from "react";
-import {
-  RiDashboardLine,
-  RiChat4Line,
-  RiMailLine,
-  RiTaskLine,
-  RiTableLine,
-  RiUserLine,
-} from "react-icons/ri";
-import { BsThreeDots } from "react-icons/bs";
 
 import "./navigation.scss";
 
@@ -17,49 +8,9 @@ import { Profile } from "./Profile/profile";
 import { NavItem } from "./NavItem/nav-item";
 
 import ProfileLogo from "../lib/assets/profile.png";
+import { mainMenu, sideMenu } from "./navigation-constants";
 
-// TODO: move this in a separate file.
-const mainMenu = [
-  {
-    route: "/",
-    logo: RiDashboardLine,
-    name: "Dashboard",
-  },
-  {
-    route: "/tasks",
-    logo: RiTaskLine,
-    name: "Tasks",
-  },
-  {
-    route: "/email",
-    logo: RiMailLine,
-    name: "Email",
-  },
-  {
-    route: "/contacts",
-    logo: RiUserLine,
-    name: "Contacts",
-  },
-  {
-    route: "/chat",
-    logo: RiChat4Line,
-    name: "Chat",
-  },
-  {
-    route: "/deals",
-    logo: RiTableLine,
-    name: "Deals",
-  },
-];
-
-const sideMenu = [
-  {
-    route: "/settings",
-    logo: BsThreeDots,
-    name: "Settings",
-  },
-];
-
+// TODO: make it responsive
 export class Navigation extends Component {
   render() {
     return (
@@ -74,6 +25,7 @@ export class Navigation extends Component {
               name={item.name}
               route={item.route}
               logo={item.logo}
+              options={item.options}
             />
           ))}
         </div>
@@ -86,6 +38,7 @@ export class Navigation extends Component {
               name={item.name}
               route={item.route}
               logo={item.logo}
+              options={item.options}
             />
           ))}
         </div>

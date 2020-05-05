@@ -1,5 +1,10 @@
 @import "variables.scss";
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: map-get($typography, font);

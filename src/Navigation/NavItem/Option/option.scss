@@ -1,0 +1,15 @@
+@import "../../../variables.scss";
+
+.option {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0 0 2.3rem;
+  text-decoration: none;
+
+  span {
+    font-weight: 300;
+    font-size: 14px;
+    margin: 0 0 0 0.5rem;
+    color: map-get($colors, neutral4);
+  }
+}

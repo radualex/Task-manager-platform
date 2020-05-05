@@ -7,6 +7,6 @@ interface HeaderProps {
 
 export class Header extends Component<HeaderProps> {
   render() {
-    return <h4 className="header">{this.props.text}</h4>;
+    return <h3 className="header">{this.props.text}</h3>;
   }
 }
