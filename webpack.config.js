@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const sass = require("node-sass");
 const sassUtils = require("node-sass-utils")(sass);
 
@@ -110,6 +111,7 @@ module.exports = {
     contentBase: path.join(__dirname, "public"),
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
       filename: "./index.html",
