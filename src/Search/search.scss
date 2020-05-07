@@ -1,0 +1,68 @@
+@import "../variables.scss";
+$size: 20px;
+$boxShadowBlurRadius: 1rem;
+
+.search {
+  display: flex;
+  align-items: center;
+  height: calc(16px + 2rem);
+  background: map-get($colors, neutral4);
+
+  -moz-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+  -webkit-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+  box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+
+  .icon {
+    width: $size;
+    height: $size;
+    color: map-get($colors, neutral5);
+  }
+
+  .magnifier {
+    margin: 0 0 0 2rem;
+  }
+
+  .notification {
+    position: relative;
+    margin: 0 2rem 0 0;
+
+    .badge:before {
+      position: absolute;
+      content: " \25CF";
+      color: red;
+      font-size: 16px;
+      right: 0.1rem;
+      bottom: 0.6rem;
+    }
+  }
+
+  input[type="search"] {
+    padding: 6px;
+    border: none;
+    margin: 0 0 0 0.5rem;
+    width: 100%;
+    color: map-get($colors, neutral3);
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: map-get($colors, neutral5);
+    }
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  ::-webkit-search-cancel-button,
+  ::-webkit-search-results-button,
+  ::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  input[type="search"]::-ms-clear,
+  ::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}

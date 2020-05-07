@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import "./tasks.scss";
 
+import { Search } from "../Search/search";
+
 export class Tasks extends Component {
   render() {
-    return <h1>Tasks</h1>;
+    return (
+      <div className="tasks content">
+        <Search placeholder={"Search for a task"} notification={false} />
+      </div>
+    );
   }
 }
