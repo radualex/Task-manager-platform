@@ -5,6 +5,8 @@ Based on [this](https://www.behance.net/gallery/94896375/Task-manager-platform-U
 
 Using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/).
 
+`npm install webpack-dev-server -g` if you don't have it.
+
 ## Available Scripts
 
 #### `npm run dev`
