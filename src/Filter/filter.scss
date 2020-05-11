@@ -1,0 +1,6 @@
+@import "../variables.scss";
+
+.filter {
+  display: flex;
+  color: map-get($colors, neutral3);
+}

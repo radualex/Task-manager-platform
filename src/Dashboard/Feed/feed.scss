@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+$boxShadowBlurRadius: 1rem;
+
+.feed {
+  -moz-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+  -webkit-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+  box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+
+  border-radius: 1rem;
+  margin: 1.5rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+
+  .feed__header {
+    display: flex;
+
+    .feed__taskCompleted {
+      width: 100%;
+      font-weight: 600;
+      color: map-get($colors, primary);
+    }
+
+    .filter {
+      margin: 0 1rem 0 0;
+    }
+  }
+
+  .feed__today {
+    font-weight: 600;
+  }
+}
