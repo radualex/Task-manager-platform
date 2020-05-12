@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./navigation.scss";
 
 import { Header } from "./Header/header";
-import { Separator } from "./Separator/separator";
+import { Separator } from "../Separator/separator";
 import { Profile } from "./Profile/profile";
 import { NavItem } from "./NavItem/nav-item";
 

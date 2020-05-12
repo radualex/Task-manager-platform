@@ -4,6 +4,8 @@ import "./feed.scss";
 
 import { ProgressBar } from "./ProgressBar/progressBar";
 import { Filter } from "../../Filter/filter";
+import { WeekklyCalendar } from "./WeeklyCalendar/weeklyCalendar";
+import { Separator } from "../../Separator/separator";
 
 interface FeedProps {
   completedTasks: number;
@@ -45,8 +47,9 @@ export class Feed extends Component<FeedProps, FeedState> {
           </div>
           <ProgressBar progress={this.state.progress} />
           <Moment className="feed__today" format="DD MMM, dddd"></Moment>
-          {/* <span className="feed__today">{this._formattedTodayDate()}</span> */}
         </div>
+        <WeekklyCalendar />
+        <Separator />
         {/* <div className="calendar"></div> */}
       </div>
     );

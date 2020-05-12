@@ -42,7 +42,7 @@
   "scripts": {
     "start": "webpack --mode=production",
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --port 8080",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,0 +1,45 @@
+@import "../../../variables.scss";
+
+.weeklyCalendar {
+  display: flex;
+  justify-content: space-between;
+
+  .currentDay {
+    margin: 3rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: map-get($colors, neutral3);
+
+    &:hover {
+      cursor: pointer;
+
+      .day {
+        background-color: map-get($colors, neutral3);
+        color: map-get($colors, neutral4);
+        border-radius: 50%;
+      }
+    }
+
+    .dayOfWeek {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .day {
+      padding: 0.4rem;
+    }
+  }
+}
+
+.selected {
+  .dayOfWeek {
+    color: map-get($colors, primary);
+  }
+
+  .day {
+    background-color: map-get($colors, primary);
+    color: map-get($colors, neutral4);
+    border-radius: 50%;
+    padding: 0.4rem;
+  }
+}
