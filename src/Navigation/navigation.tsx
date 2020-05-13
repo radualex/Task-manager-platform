@@ -16,7 +16,7 @@ export class Navigation extends Component {
     return (
       <div className="panel">
         <Header text="Personal manager" />
-        <Separator />
+        <Separator margin={"8px -1rem"} />
         <Profile source={ProfileLogo} />
         <div className="mainMenu">
           {mainMenu.map((item) => (
@@ -30,7 +30,7 @@ export class Navigation extends Component {
           ))}
         </div>
 
-        <Separator />
+        <Separator margin={"8px -1rem"} />
         <div className="sideMenu">
           {sideMenu.map((item) => (
             <NavItem

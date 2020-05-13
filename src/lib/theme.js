@@ -8,6 +8,7 @@ const neutralColor3 = "#707683";
 const neutralColor4 = "#fefefe";
 const neutralColor5 = "#cabffd";
 const neutralColor6 = "#dadcdd";
+const neutralColor7 = "#f3f5f6";
 const backgroundColor = "#f7fbfe";
 
 const font = "'Poppins', sans-serif";
@@ -27,6 +28,7 @@ module.exports = {
     neutral4: neutralColor4,
     neutral5: neutralColor5,
     neutral6: neutralColor6,
+    neutral7: neutralColor7,
     backgroundColor: backgroundColor,
   },
 };

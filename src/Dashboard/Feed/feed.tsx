@@ -7,22 +7,22 @@ import { Filter } from "../../Filter/filter";
 import { WeekklyCalendar } from "./WeeklyCalendar/weeklyCalendar";
 import { Separator } from "../../Separator/separator";
 
-interface FeedProps {
+interface FeedState {
+  options: Array<string>;
   completedTasks: number;
   maximumTasks: number;
 }
 
-interface FeedState {
-  progress: number;
-}
-
-export class Feed extends Component<FeedProps, FeedState> {
+// TODO: the progress bar needs to be updated based on the data after filter is set.
+export class Feed extends Component<{}, FeedState> {
   readonly state = {
-    progress: this._calculateProgress(),
+    completedTasks: 8,
+    maximumTasks: 10,
+    options: ["This week", "Next week"],
   };
 
   _calculateProgress() {
-    return (this.props.completedTasks / this.props.maximumTasks) * 100;
+    return (this.state.completedTasks / this.state.maximumTasks) * 100;
   }
 
   _formattedTodayDate() {
@@ -40,17 +40,16 @@ export class Feed extends Component<FeedProps, FeedState> {
         <div className="feed__progress">
           <div className="feed__header">
             <span className="feed__taskCompleted">
-              {this.props.completedTasks} task completed out of{" "}
-              {this.props.maximumTasks}
+              {this.state.completedTasks} task completed out of{" "}
+              {this.state.maximumTasks}
             </span>
-            <Filter />
+            <Filter options={this.state.options} />
           </div>
-          <ProgressBar progress={this.state.progress} />
+          <ProgressBar progress={this._calculateProgress()} />
           <Moment className="feed__today" format="DD MMM, dddd"></Moment>
         </div>
         <WeekklyCalendar />
-        <Separator />
-        {/* <div className="calendar"></div> */}
+        <Separator margin={"8px -1.5rem"} />
       </div>
     );
   }

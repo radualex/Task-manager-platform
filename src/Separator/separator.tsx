@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import "./separator.scss";
 
-// TODO: expose className to be passed from parent
-export class Separator extends Component {
+interface SeparatorProps {
+  margin: string;
+}
+
+export class Separator extends Component<SeparatorProps> {
   render() {
-    return <hr className="separator-header" />;
+    return (
+      <hr
+        className="separator-header"
+        style={{ margin: `${this.props.margin}` }}
+      />
+    );
   }
 }

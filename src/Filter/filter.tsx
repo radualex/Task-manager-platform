@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import "./filter.scss";
 
-// TODO: finish dropdown
 import { Dropdown } from "../Dropdown/dropdown";
 
-export class Filter extends Component {
+export class FilterProps {
+  options: Array<string>;
+}
+
+export class Filter extends Component<FilterProps> {
   render() {
     return (
       <div className="filter">
-        <span>Show:</span>
-        {/* <Dropdown /> */}
+        <span className="filter__label">Show:</span>
+        <Dropdown options={this.props.options} />
       </div>
     );
   }

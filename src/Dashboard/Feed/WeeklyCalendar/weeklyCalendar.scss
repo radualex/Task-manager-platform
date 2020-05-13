@@ -11,11 +11,11 @@
     align-items: center;
     color: map-get($colors, neutral3);
 
-    &:hover {
+    &:hover:not(.selected) {
       cursor: pointer;
 
       .day {
-        background-color: map-get($colors, neutral3);
+        background-color: map-get($colors, neutral2);
         color: map-get($colors, neutral4);
         border-radius: 50%;
       }

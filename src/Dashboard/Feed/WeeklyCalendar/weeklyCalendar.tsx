@@ -24,6 +24,7 @@ interface WeekklyCalendarState {
   activeIndex: number;
 }
 
+// TODO: needs props to pass a date from parent and then get the next 6 days and show those (because of the filter)
 /**
  * @event 'day-changed' dispatched when the user clicks on a day. Details: {day, dayOfWeek}
  */

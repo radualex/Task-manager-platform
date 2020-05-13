@@ -14,6 +14,7 @@ const routes = [
   },
 ];
 
+// TODO: see what's wrong with routes when refresh and the path is not /
 export class Routes extends Component {
   render() {
     return (
