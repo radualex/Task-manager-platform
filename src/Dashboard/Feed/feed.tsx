@@ -6,6 +6,7 @@ import { ProgressBar } from "./ProgressBar/progressBar";
 import { Filter } from "../../Filter/filter";
 import { WeekklyCalendar } from "./WeeklyCalendar/weeklyCalendar";
 import { Separator } from "../../Separator/separator";
+import { Card } from "./Card/card";
 
 interface FeedState {
   options: Array<string>;
@@ -50,6 +51,7 @@ export class Feed extends Component<{}, FeedState> {
         </div>
         <WeekklyCalendar />
         <Separator margin={"8px -1.5rem"} />
+        <Card />
       </div>
     );
   }

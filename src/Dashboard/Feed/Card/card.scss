@@ -1,0 +1,25 @@
+@import "../../../variables.scss";
+$boxShadowBlurRadius: 1rem;
+
+.feed__card {
+  -moz-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+  -webkit-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+  box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
+
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+
+  .feed__row__one {
+    display: flex;
+
+    .feed__card__header {
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .feed__card__type {
+      color: map-get($colors, neutral3);
+    }
+  }
+}
