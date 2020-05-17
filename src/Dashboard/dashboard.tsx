@@ -3,6 +3,7 @@ import "./dashboard.scss";
 
 import { Search } from "../Search/search";
 import { Feed } from "./Feed/feed";
+import { Graph } from "./Graph/graph";
 
 interface DashboardState {
   notification: boolean;
@@ -23,7 +24,13 @@ export class Dashboard extends Component<{}, DashboardState> {
           notification={this.state.notification}
           notificationClicked={this._handleNotificationEvent}
         />
-        <Feed />
+        <div className="dashboard__wrapper">
+          <Feed />
+          <div className="dashboard__graphs">
+            <Graph options={["This week", "Next week", "Next month"]} text={"Deals"}/>
+            <Graph options={["This week", "Next week", "Next month"]} text={"Tasks"}/>
+          </div>
+        </div>
       </div>
     );
   }
