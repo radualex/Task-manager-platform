@@ -48,6 +48,7 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -109,6 +110,7 @@ module.exports = {
   devtool: "cheap-module-eval-source-map",
   devServer: {
     contentBase: path.join(__dirname, "public"),
+    historyApiFallback: true,
   },
   plugins: [
     new CleanWebpackPlugin(),

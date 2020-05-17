@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Dashboard } from "./Dashboard/dashboard";
 import { Tasks } from "./Tasks/tasks";
 
@@ -24,9 +24,10 @@ export class Routes extends Component {
             key={i}
             exact
             path={route.path}
-            render={(props) => <route.component {...props} />}
+            component={route.component}
           ></Route>
         ))}
+        <Redirect from="*" to="/" />
       </Switch>
     );
   }
