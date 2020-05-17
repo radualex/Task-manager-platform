@@ -5,8 +5,8 @@ import "./option.scss";
 
 interface OptionProps {
   color: string;
-  text: string;
-  hash: string;
+  text?: string;
+  hash?: string;
 }
 
 export class Option extends Component<OptionProps> {

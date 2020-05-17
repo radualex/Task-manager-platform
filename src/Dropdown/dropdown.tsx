@@ -8,12 +8,16 @@ interface DropdownProps {
 }
 
 interface DropdownState {
-  defaultOption: string;
+  value: string;
 }
 
 export class Dropdown extends Component<DropdownProps, DropdownState> {
   readonly state = {
-    defaultOption: this.props.options[0],
+    value: this.props.options[0],
+  };
+
+  _onSelect = (ev: any) => {
+    this.setState({ value: ev.value });
   };
 
   render() {
@@ -24,8 +28,9 @@ export class Dropdown extends Component<DropdownProps, DropdownState> {
         controlClassName="dropdown__control"
         menuClassName="dropdown__menu"
         placeholderClassName="dropdown__placeholder"
-        value={this.state.defaultOption}
+        value={this.state.value}
         options={this.props.options}
+        onChange={this._onSelect}
       />
     );
   }

@@ -1,5 +1,6 @@
 @import "../../../variables.scss";
 $boxShadowBlurRadius: 1rem;
+$iconSize: 18px;
 
 .feed__card {
   -moz-box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
@@ -7,8 +8,41 @@ $boxShadowBlurRadius: 1rem;
   box-shadow: 0 0 $boxShadowBlurRadius map-get($colors, neutral5);
 
   border-radius: 1rem;
-  margin: 1rem 0;
+  margin: 0;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .feed__card__icons {
+    display: flex;
+
+    svg {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .feed__card__circles {
+      display: flex;
+      align-items: center;
+      margin: 0 0.8rem 0 0;
+
+      svg {
+        margin: 0 0.3rem 0 0;
+      }
+    }
+
+    .feed__card__edit__icons {
+      display: flex;
+
+      svg {
+        height: $iconSize;
+        width: $iconSize;
+        color: map-get($colors, neutral6);
+        margin: 0 0.5rem 0 0;
+      }
+    }
+  }
 
   .feed__row__one {
     display: flex;
@@ -20,6 +54,35 @@ $boxShadowBlurRadius: 1rem;
 
     .feed__card__type {
       color: map-get($colors, neutral3);
+    }
+  }
+
+  .feed__row__two {
+    display: flex;
+    margin: 1rem 0;
+
+    .feed__card__label {
+      color: map-get($colors, neutral3);
+    }
+
+    .feed__card__date {
+      margin: 0 0 0 0.5rem;
+    }
+  }
+
+  .feed__row__three {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0 0 0;
+
+    .feed__card__name {
+      margin: 0 0 0 1rem;
+      // width: 100%;
+    }
+
+    .feed__push {
+      display: flex;
+      margin: 0 0 0 auto;
     }
   }
 }
