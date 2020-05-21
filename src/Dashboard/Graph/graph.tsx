@@ -4,6 +4,8 @@ import "./graph.scss";
 import { Filter } from "../../Filter/filter";
 import { Separator } from "../../Separator/separator";
 
+import { AreaGraph } from "./Area/area";
+
 interface GraphProps {
   text: string;
   options: Array<string>;
@@ -18,6 +20,8 @@ export class Graph extends Component<GraphProps> {
           <Filter options={this.props.options} />
         </div>
         <Separator margin={"1.3rem -1.5rem 0 -1.5rem"} />
+        {/* add D3 graph here based on type from props */}
+        <AreaGraph />
       </div>
     );
   }
