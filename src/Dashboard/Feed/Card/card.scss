@@ -2,9 +2,9 @@
 $iconSize: 18px;
 
 .feed__card {
-  -moz-box-shadow: 0px 2px 5px 0px map-get($colors, neutral6);
-  -webkit-box-shadow: 0px 2px 5px 0px map-get($colors, neutral6);
-  box-shadow: 0px 2px 5px 0px map-get($colors, neutral6);
+  -moz-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+  -webkit-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+  box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
 
   border-radius: 1rem;
   margin: 0;
@@ -37,7 +37,7 @@ $iconSize: 18px;
       svg {
         height: $iconSize;
         width: $iconSize;
-        color: map-get($colors, neutral6);
+        color: map-get($colors, neutral5);
         margin: 0 0.5rem 0 0;
       }
     }

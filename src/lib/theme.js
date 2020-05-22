@@ -6,8 +6,8 @@ const neutralColor1 = "#192b3e";
 const neutralColor2 = "#323b45";
 const neutralColor3 = "#707683";
 const neutralColor4 = "#fefefe";
-const neutralColor5 = "#cabffd";
-const neutralColor6 = "#dadcdd";
+const neutralColor5 = "#dadcdd";
+const neutralColor6 = "#cabffd";
 const neutralColor7 = "#f3f5f6";
 const backgroundColor = "#f7fbfe";
 
