@@ -5,10 +5,12 @@ import { Filter } from "../../Filter/filter";
 import { Separator } from "../../Separator/separator";
 
 import { AreaGraph } from "./Area/area";
+import { DonutGraph } from "./Donut/donut";
 
 interface GraphProps {
   text: string;
   options: Array<string>;
+  type: string;
 }
 
 export class Graph extends Component<GraphProps> {
@@ -21,7 +23,7 @@ export class Graph extends Component<GraphProps> {
         </div>
         <Separator margin={"1.3rem -1.5rem 0 -1.5rem"} />
         {/* add D3 graph here based on type from props */}
-        <AreaGraph />
+        {this.props.type === "area" ? <AreaGraph /> : <DonutGraph />}
       </div>
     );
   }

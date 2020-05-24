@@ -27,8 +27,16 @@ export class Dashboard extends Component<{}, DashboardState> {
         <div className="dashboard__wrapper">
           <Feed />
           <div className="dashboard__graphs">
-            <Graph options={["This week", "Next week", "Next month"]} text={"Deals"}/>
-            <Graph options={["This week", "Next week", "Next month"]} text={"Tasks"}/>
+            <Graph
+              options={["This week", "Next week", "Next month"]}
+              text={"Deals"}
+              type={"area"}
+            />
+            <Graph
+              options={["This week", "Next week", "Next month"]}
+              text={"Tasks"}
+              type={"donut"}
+            />
           </div>
         </div>
       </div>
