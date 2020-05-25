@@ -6,7 +6,7 @@
   .dashboard__wrapper {
     grid-auto-flow: column;
     display: grid;
-    grid-template-columns: 50%;
+    grid-template-columns: 60% 40%;
 
     .dashboard__graphs {
       display: grid;

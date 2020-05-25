@@ -13,6 +13,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+// TODO: from props
 const data = [
   { date: "1 Dec", deals: 50 },
   { date: "8 Dec", deals: 170 },
