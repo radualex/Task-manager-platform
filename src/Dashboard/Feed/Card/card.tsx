@@ -26,6 +26,8 @@ export class Card extends Component<CardProps> {
     switch (status) {
       case "Completed":
         return colors.primary;
+      case "Active":
+        return colors.secondary1;
       case "Ended":
         return colors.secondary2;
       default:

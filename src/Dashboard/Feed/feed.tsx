@@ -3,6 +3,8 @@ import Moment from "react-moment";
 import * as moment from "moment";
 import "./feed.scss";
 
+import { Utility } from "../../lib/utility";
+
 import { ProgressBar } from "./ProgressBar/progressBar";
 import { Filter } from "../../Filter/filter";
 import { WeekklyCalendar } from "./WeeklyCalendar/weeklyCalendar";
@@ -15,31 +17,138 @@ interface FeedState {
   options: Array<string>;
   completedTasks: number;
   maximumTasks: number;
+  cardsToShow: number;
+  cardData: Array<Object>;
 }
 
+// TODO: data should be obtained from api.
 // TODO: the progress bar needs to be updated based on the data after filter is set.
 export class Feed extends Component<{}, FeedState> {
   readonly state = {
     completedTasks: 8,
     maximumTasks: 10,
     options: ["This week", "Next week", "Next month"],
+    cardsToShow: 3,
+    cardData: [
+      {
+        task: "Send benefit review by Sunday",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+      {
+        task: "Send benefit review by Sunday1",
+        date: "2020-05-26T10:00:00",
+        type: "Call",
+        status: "Ended",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: true,
+      },
+      {
+        task: "Send benefit review by Sunday2",
+        date: "2020-05-25T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+      {
+        task: "Send benefit review by Sunday3",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+      {
+        task: "Send benefit review by Sunday4",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: true,
+      },
+      {
+        task: "Send benefit review by Sunday5",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+      {
+        task: "Send benefit review by Sunday6",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+      {
+        task: "Send benefit review by Sunday7",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Active",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: true,
+      },
+      {
+        task: "Send benefit review by Sunday8",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Completed",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: true,
+      },
+      {
+        task: "Send benefit review by Sunday9",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Active",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+      {
+        task: "Send benefit review by Sunday10",
+        date: "2020-05-27T10:00:00",
+        type: "Reminder",
+        status: "Ended",
+        logo: ProfileLogo,
+        name: "Radu-Alexandru Stoica",
+        editMode: false,
+      },
+    ],
   };
 
   _calculateProgress() {
     return (this.state.completedTasks / this.state.maximumTasks) * 100;
   }
 
-  // TODO: date should be propagated from parent through props
-  _formattedDateForCard() {
-    let today = moment();
+  _formattedDateForCard(dateString: any) {
+    let parsedDate = moment(dateString);
 
-    const date = today.format("DD");
-    const month = today.format("MMM");
-    const year = today.format("YYYY");
+    const date = parsedDate.format("DD");
+    const month = parsedDate.format("MMM");
+    const year = parsedDate.format("YYYY");
     return `${month} ${date}, ${year}`;
   }
 
-  // TODO: card data should be dynamic and do a map
+  _handleShowMore = () => {
+    this.setState({ cardData: Utility.rotate(3, this.state.cardData) });
+  };
+
   render() {
     return (
       <div className="feed">
@@ -57,35 +166,25 @@ export class Feed extends Component<{}, FeedState> {
         <WeekklyCalendar />
         <Separator margin={"0px -1.5rem"} />
         <div className="feed__cards">
-          <Card
-            task={"Send benefit review by Sunday"}
-            date={this._formattedDateForCard()}
-            type={"Reminder"}
-            status={"Completed"}
-            logo={ProfileLogo}
-            name={"Radu-Alexandru Stoica"}
-            editMode={false}
-          />
-          <Card
-            task={"Send benefit review by Sunday"}
-            date={this._formattedDateForCard()}
-            type={"Call"}
-            status={"Ended"}
-            logo={ProfileLogo}
-            name={"Radu-Alexandru Stoica"}
-            editMode={true}
-          />
-          <Card
-            task={"Send benefit review by Sunday"}
-            date={this._formattedDateForCard()}
-            type={"Event"}
-            status={"Completed"}
-            logo={ProfileLogo}
-            name={"Radu-Alexandru Stoica"}
-            editMode={false}
-          />
+          {this.state.cardData.slice(0, this.state.cardsToShow).map((item) => (
+            <Card
+              task={item.task}
+              date={this._formattedDateForCard(item.date)}
+              type={item.type}
+              status={item.status}
+              logo={item.logo}
+              name={item.name}
+              editMode={item.editMode}
+            />
+          ))}
         </div>
-        <span className="feed__more">Show more</span>
+        {this.state.cardsToShow >= this.state.cardData.length ? (
+          ""
+        ) : (
+          <span className="feed__more" onClick={this._handleShowMore}>
+            Show more
+          </span>
+        )}
       </div>
     );
   }

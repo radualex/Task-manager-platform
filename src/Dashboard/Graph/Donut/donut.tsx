@@ -63,7 +63,7 @@ const renderActiveShape = (props: any) => {
 
 export class DonutGraph extends Component<{}, DonutGraphState> {
   readonly state = {
-    activeIndex: 0,
+    activeIndex: 1,
   };
   onPieEnter = (data: any, index: number) => {
     this.setState({

@@ -7,6 +7,7 @@
     grid-auto-flow: column;
     display: grid;
     grid-template-columns: 60% 40%;
+    height: -webkit-fill-available;
 
     .dashboard__graphs {
       display: grid;
