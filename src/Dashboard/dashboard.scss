@@ -2,12 +2,11 @@
 
 .dashboard {
   overflow-y: scroll;
-
   .dashboard__wrapper {
     grid-auto-flow: column;
     display: grid;
     grid-template-columns: 60% 40%;
-    height: -webkit-fill-available;
+    height: calc(100% - 48px); // due to the searchbar. otherwise you overflow
 
     .dashboard__graphs {
       display: grid;

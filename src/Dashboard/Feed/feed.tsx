@@ -18,6 +18,7 @@ interface FeedState {
   completedTasks: number;
   maximumTasks: number;
   cardsToShow: number;
+  cardsWhenShowMore: number;
   cardData: Array<Object>;
 }
 
@@ -29,6 +30,7 @@ export class Feed extends Component<{}, FeedState> {
     maximumTasks: 10,
     options: ["This week", "Next week", "Next month"],
     cardsToShow: 3,
+    cardsWhenShowMore: 3,
     cardData: [
       {
         task: "Send benefit review by Sunday",
@@ -146,7 +148,10 @@ export class Feed extends Component<{}, FeedState> {
   }
 
   _handleShowMore = () => {
-    this.setState({ cardData: Utility.rotate(3, this.state.cardData) });
+    // this.setState({ cardData: Utility.rotate(3, this.state.cardData) });
+    this.setState({
+      cardsToShow: this.state.cardsToShow + this.state.cardsWhenShowMore,
+    });
   };
 
   render() {
@@ -165,7 +170,7 @@ export class Feed extends Component<{}, FeedState> {
         </div>
         <WeekklyCalendar />
         <Separator margin={"0px -1.5rem"} />
-        <div className="feed__cards">
+        <div className="feed__cards disable-scrollbars">
           {this.state.cardData.slice(0, this.state.cardsToShow).map((item) => (
             <Card
               task={item.task}

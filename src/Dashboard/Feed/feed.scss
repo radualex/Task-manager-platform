@@ -16,8 +16,9 @@
 
   .feed__cards {
     display: grid;
-    grid-row-gap: 1rem;
     margin: 1rem 0;
+    max-height: 400px;
+    overflow-y: scroll;
   }
 
   .feed__header {
@@ -48,5 +49,14 @@
       cursor: pointer;
       color: map-get($colors, secondary2);
     }
+  }
+}
+
+.disable-scrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
   }
 }
