@@ -3,8 +3,6 @@ import Moment from "react-moment";
 import * as moment from "moment";
 import "./feed.scss";
 
-import { Utility } from "../../lib/utility";
-
 import { ProgressBar } from "./ProgressBar/progressBar";
 import { Filter } from "../../Filter/filter";
 import { WeekklyCalendar } from "./WeeklyCalendar/weeklyCalendar";
@@ -167,7 +165,7 @@ export class Feed extends Component<{}, FeedState> {
           </div>
           <ProgressBar progress={this._calculateProgress()} />
           <Moment className="feed__today" format="DD MMM, dddd"></Moment>
-        </div>
+        </div> 
         <WeekklyCalendar />
         <Separator margin={"0px -1.5rem"} />
         <div className="feed__cards disable-scrollbars">
@@ -181,7 +179,7 @@ export class Feed extends Component<{}, FeedState> {
               name={item.name}
               editMode={item.editMode}
             />
-          ))}
+          ))} 
         </div>
         {this.state.cardsToShow >= this.state.cardData.length ? (
           ""
