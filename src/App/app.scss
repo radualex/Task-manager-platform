@@ -16,6 +16,7 @@
   .content {
     width: -webkit-fill-available;
     // max-height: 100vh;
+    height: calc(100vh - -48px);
     background: map-get($colors, backgroundColor);
   }
 }

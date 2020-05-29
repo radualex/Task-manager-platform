@@ -24,7 +24,7 @@ const data = [
 export class AreaGraph extends Component {
   render() {
     return (
-      <ResponsiveContainer width="99%" height="87%">
+      <ResponsiveContainer width="99%" height="85%">
         <AreaChart
           data={data}
           margin={{ top: 20, right: 5, left: -20, bottom: 5 }}

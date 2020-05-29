@@ -1,12 +1,12 @@
 @import "../variables.scss";
 
 .dashboard {
-  overflow-y: scroll;
+  overflow-y: scroll; // TODO: I should disable. everything should fit in the screen.
   .dashboard__wrapper {
     grid-auto-flow: column;
     display: grid;
     grid-template-columns: 60% 40%;
-    height: calc(100% - 48px); // due to the searchbar. otherwise you overflow
+    height: calc(100vh - 48px); // due to the searchbar. otherwise you overflow
 
     .dashboard__graphs {
       display: grid;
@@ -14,6 +14,7 @@
       grid-template-rows: 50%;
       grid-row-gap: 1.5rem;
       margin: 1.5rem 1.5rem 1.5rem 0;
+      padding: 0 0 4px 0; // due to the separator
     }
   }
 }
