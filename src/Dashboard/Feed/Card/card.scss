@@ -18,6 +18,7 @@ $iconSize: 18px;
 
   .feed__card__icons {
     display: flex;
+    align-items: center;
 
     svg {
       &:hover {

@@ -22,7 +22,6 @@ export class Graph extends Component<GraphProps> {
           <Filter options={this.props.options} />
         </div>
         <Separator margin={"1.3rem -1.5rem 0 -1.5rem"} />
-        {/* add D3 graph here based on type from props */}
         {this.props.type === "area" ? <AreaGraph /> : <DonutGraph />}
       </div>
     );

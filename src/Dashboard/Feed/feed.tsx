@@ -146,7 +146,6 @@ export class Feed extends Component<{}, FeedState> {
   }
 
   _handleShowMore = () => {
-    // this.setState({ cardData: Utility.rotate(3, this.state.cardData) });
     this.setState({
       cardsToShow: this.state.cardsToShow + this.state.cardsWhenShowMore,
     });

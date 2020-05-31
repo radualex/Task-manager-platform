@@ -22,6 +22,9 @@ const COLORS = [colors.secondary1, colors.primary, colors.secondary2];
 
 interface DonutGraphState {
   activeIndex: number;
+  isMobile?: boolean;
+  isTablet?: boolean;
+  isBigScreen?: boolean;
 }
 
 const renderActiveShape = (props: any) => {
@@ -64,7 +67,33 @@ const renderActiveShape = (props: any) => {
 export class DonutGraph extends Component<{}, DonutGraphState> {
   readonly state = {
     activeIndex: 1,
+    isMobile: false,
+    isTablet: false,
+    isBigScreen: false,
   };
+
+  constructor(props: any) {
+    super(props);
+    this.updatePredicate = this.updatePredicate.bind(this);
+  }
+
+  componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate() {
+    this.setState({
+      isMobile: window.innerWidth <= 600,
+      isTablet: window.innerWidth > 600 && window.innerWidth <= 768,
+      isBigScreen: window.innerWidth >= 2400,
+    });
+  }
+
   onPieEnter = (data: any, index: number) => {
     this.setState({
       activeIndex: index,
@@ -72,8 +101,13 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
   };
 
   render() {
+    const isBigScreen = this.state.isBigScreen;
+    const cx = isBigScreen ? "30%" : "25%";
+    const cy = isBigScreen ? "32%" : "40%";
+    const rightLegend = isBigScreen ? "0" : "1.5rem";
+
     return (
-      <ResponsiveContainer width="99%" height="85%">
+      <ResponsiveContainer width="99%" aspect={isBigScreen ? 1 : 1.7}>
         <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
           <Pie
             dataKey="value"
@@ -81,8 +115,8 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
             innerRadius={60}
             outerRadius={67}
             paddingAngle={0}
-            cx="25%"
-            cy="36%"
+            cx={cx}
+            cy={cy}
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
             onMouseEnter={this.onPieEnter}
@@ -102,7 +136,7 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
             align="right"
             iconType="circle"
             iconSize={7}
-            wrapperStyle={{ right: "1.5rem" }}
+            wrapperStyle={{ right: `${rightLegend}` }}
             layout="vertical"
           />
         </PieChart>

@@ -21,13 +21,51 @@ const data = [
   { date: "31 Dec", deals: 165 },
 ];
 
-export class AreaGraph extends Component {
+interface AreaGraphState {
+  isMobile?: boolean;
+  isTablet?: boolean;
+  isBigScreen?: boolean;
+}
+
+export class AreaGraph extends Component<{}, AreaGraphState> {
+  readonly state = {
+    isMobile: false,
+    isTablet: false,
+    isBigScreen: false,
+  };
+
+  constructor(props: any) {
+    super(props);
+    this.updatePredicate = this.updatePredicate.bind(this);
+  }
+
+  componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate() {
+    this.setState({
+      isMobile: window.innerWidth <= 600,
+      isTablet: window.innerWidth > 600 && window.innerWidth <= 768,
+      isBigScreen: window.innerWidth >= 2400,
+    });
+  }
+
   render() {
+    const isBigScreen = this.state.isBigScreen;
+    const leftMargin = isBigScreen ? 0 : -20;
+    const bottomMargin = isBigScreen ? 10 : 5;
+
     return (
-      <ResponsiveContainer width="99%" height="85%">
+      <ResponsiveContainer width="99%" aspect={isBigScreen ? 1 : 1.7}>
         <AreaChart
           data={data}
-          margin={{ top: 20, right: 5, left: -20, bottom: 5 }}
+          margin={{ top: 20, right: 5, left: leftMargin, bottom: bottomMargin }}
         >
           <defs>
             <linearGradient
@@ -56,7 +94,7 @@ export class AreaGraph extends Component {
             align="left"
             iconType="circle"
             iconSize={7}
-            wrapperStyle={{ left: "0" }}
+            wrapperStyle={{ left: "0", top: "0" }}
           />
           <Tooltip
             contentStyle={{

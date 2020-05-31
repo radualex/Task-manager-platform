@@ -15,7 +15,8 @@
 
   .content {
     width: -webkit-fill-available;
-    // max-height: 100vh;
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - -48px);
     background: map-get($colors, backgroundColor);
   }

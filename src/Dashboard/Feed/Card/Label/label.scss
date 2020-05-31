@@ -2,9 +2,12 @@
 
 .card__label {
   padding: 0.3rem 0.6rem;
-  width: 90px;
+  width: 120px;
   border-radius: 5px;
   text-align: center;
   color: map-get($colors, neutral4);
-  font-size: 12px;
+
+  @media (min-width: $breakpoint-bigscreen) {
+    width: 150px;
+  }
 }
