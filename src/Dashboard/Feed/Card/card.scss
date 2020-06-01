@@ -54,6 +54,10 @@ $iconSize: 18px;
     .feed__card__header {
       font-weight: 600;
       width: 100%;
+
+      @media (max-width: $breakpoint-mobile) {
+        margin: 0 1rem 0 0;
+      }
     }
 
     .feed__card__type {
@@ -81,11 +85,21 @@ $iconSize: 18px;
 
     .feed__card__name {
       margin: 0 0 0 1rem;
+
+      @media (max-width: $breakpoint-mobile) {
+        display: none;
+      }
     }
 
     .feed__push {
       display: flex;
       margin: 0 0 0 auto;
+
+      @media (max-width: $breakpoint-mobile) {
+        .feed__card__circles {
+          display: none;
+        }
+      }
     }
   }
 }

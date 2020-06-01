@@ -19,5 +19,9 @@
     flex-direction: column;
     height: calc(100vh - -48px);
     background: map-get($colors, backgroundColor);
+
+    @media (max-width: $breakpoint-tablet) {
+      height: 100vh;
+    }
   }
 }

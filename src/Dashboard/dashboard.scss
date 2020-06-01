@@ -15,10 +15,20 @@
       grid-row-gap: 1.5rem;
       margin: 1.5rem 1.5rem 1.5rem 0;
       padding: 0 0 4px 0; // due to the separator
+
+      @media (max-width: $breakpoint-tablet) {
+        margin: 1.5rem;
+        padding: 0;
+      }
     }
 
     @media (min-width: $breakpoint-bigscreen) {
       margin: 0 20%;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      grid-auto-flow: row;
+      grid-template-columns: none;
     }
   }
 }

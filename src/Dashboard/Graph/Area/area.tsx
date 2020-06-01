@@ -51,7 +51,7 @@ export class AreaGraph extends Component<{}, AreaGraphState> {
   updatePredicate() {
     this.setState({
       isMobile: window.innerWidth <= 600,
-      isTablet: window.innerWidth > 600 && window.innerWidth <= 768,
+      isTablet: window.innerWidth > 600 && window.innerWidth <= 1024,
       isBigScreen: window.innerWidth >= 2400,
     });
   }

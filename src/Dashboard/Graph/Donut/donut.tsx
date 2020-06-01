@@ -64,6 +64,7 @@ const renderActiveShape = (props: any) => {
   );
 };
 
+// TODO: try to make a mixin out of this resize thing, so you can reuse it everywhere is needed.
 export class DonutGraph extends Component<{}, DonutGraphState> {
   readonly state = {
     activeIndex: 1,
@@ -89,7 +90,7 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
   updatePredicate() {
     this.setState({
       isMobile: window.innerWidth <= 600,
-      isTablet: window.innerWidth > 600 && window.innerWidth <= 768,
+      isTablet: window.innerWidth > 600 && window.innerWidth <= 1024,
       isBigScreen: window.innerWidth >= 2400,
     });
   }
@@ -102,8 +103,9 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
 
   render() {
     const isBigScreen = this.state.isBigScreen;
-    const cx = isBigScreen ? "30%" : "25%";
-    const cy = isBigScreen ? "32%" : "40%";
+    const isMobile = this.state.isMobile;
+    const cx = isBigScreen ? "30%" : isMobile ? "38%" : "25%";
+    const cy = isBigScreen ? "32%" : isMobile ? "50%" : "40%";
     const rightLegend = isBigScreen ? "0" : "1.5rem";
 
     return (

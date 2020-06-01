@@ -16,6 +16,11 @@
     text-align: left;
   }
 
+  @media (max-width: $breakpoint-tablet) {
+    margin: 1.5rem 1.5rem 0 1.5rem;
+    height: auto;
+  }
+
   .feed__cards {
     display: grid;
     grid-auto-rows: minmax(min-content, max-content);
@@ -25,6 +30,14 @@
 
     @media (min-width: $breakpoint-bigscreen) {
       height: calc(100vh - 400px);
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      height: 29vh;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      height: 50vh;
     }
   }
 
