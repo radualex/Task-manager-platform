@@ -7,12 +7,20 @@ interface TasksState {
   notification: boolean;
 }
 
-export class Tasks extends Component<{}, TasksState> {
+interface TaskProps {
+  hamburgerClicked: Function;
+}
+
+export class Tasks extends Component<TaskProps, TasksState> {
   readonly state = {
     notification: false,
   };
   _handleNotificationEvent = () => {
     this.setState({ notification: !this.state.notification });
+  };
+
+  _handleHamburgerEvent = () => {
+    this.props.hamburgerClicked();
   };
 
   render() {
@@ -22,6 +30,7 @@ export class Tasks extends Component<{}, TasksState> {
           placeholder={"Search for a task"}
           notification={this.state.notification}
           notificationClicked={this._handleNotificationEvent}
+          hamburgerClicked={this._handleHamburgerEvent}
         />
       </div>
     );

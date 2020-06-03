@@ -11,6 +11,12 @@
     display: none;
   }
 
+  @media (max-width: $breakpoint-mobile) {
+    position: absolute;
+    width: 100%;
+    z-index: 11;
+  }
+
   .mainMenu {
     margin: 0 0 1.5rem 0;
     display: grid;
@@ -20,4 +26,12 @@
   .sideMenu {
     margin: 1rem 0 0 0;
   }
+}
+
+.panel__hide {
+  display: none;
+}
+
+.panel__show {
+  display: initial;
 }

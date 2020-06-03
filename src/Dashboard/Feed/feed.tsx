@@ -164,21 +164,24 @@ export class Feed extends Component<{}, FeedState> {
           </div>
           <ProgressBar progress={this._calculateProgress()} />
           <Moment className="feed__today" format="DD MMM, dddd"></Moment>
-        </div> 
+        </div>
         <WeekklyCalendar />
         <Separator margin={"0px -1.5rem"} />
         <div className="feed__cards disable-scrollbars">
-          {this.state.cardData.slice(0, this.state.cardsToShow).map((item) => (
-            <Card
-              task={item.task}
-              date={this._formattedDateForCard(item.date)}
-              type={item.type}
-              status={item.status}
-              logo={item.logo}
-              name={item.name}
-              editMode={item.editMode}
-            />
-          ))} 
+          {this.state.cardData
+            .slice(0, this.state.cardsToShow)
+            .map((item, index) => (
+              <Card
+                key={`card-${index} `}
+                task={item.task}
+                date={this._formattedDateForCard(item.date)}
+                type={item.type}
+                status={item.status}
+                logo={item.logo}
+                name={item.name}
+                editMode={item.editMode}
+              />
+            ))}
         </div>
         {this.state.cardsToShow >= this.state.cardData.length ? (
           ""

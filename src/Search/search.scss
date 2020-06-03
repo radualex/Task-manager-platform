@@ -17,8 +17,25 @@ $size: 20px;
     color: map-get($colors, neutral5);
   }
 
+  .hamburger {
+    color: map-get($colors, primary);
+    margin: 0 0 0 1.5rem;
+    display: none;
+
+    @media (max-width: $breakpoint-tablet) {
+      display: initial;
+
+      &:active {
+        color: map-get($colors, secondary2);
+      }
+    }
+  }
+
   .magnifier {
     margin: 0 0 0 2rem;
+    @media (max-width: $breakpoint-tablet) {
+      margin: 0 0 0 1rem;
+    }
   }
 
   .notification {

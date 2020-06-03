@@ -12,19 +12,31 @@ const routes = [
     path: "/tasks",
     component: Tasks,
   },
+
+  // TODO: add all routes
 ];
 
+interface RouteProps {
+  hamburgerClicked: Function;
+}
+
 // TODO: see what's wrong with routes when refresh and the path is not /
-export class Routes extends Component {
+export class Routes extends Component<RouteProps> {
+  _handleHamburgerClicked = () => {
+    this.props.hamburgerClicked();
+  };
+
   render() {
     return (
       <Switch>
-        {routes.map((route, i) => (
+        {routes.map(({ path, component: C }, i) => (
           <Route
-            key={i}
+            key={`route-${i}`}
             exact
-            path={route.path}
-            component={route.component}
+            path={path}
+            component={(props: any) => (
+              <C {...props} hamburgerClicked={this._handleHamburgerClicked} />
+            )}
           ></Route>
         ))}
         <Redirect from="*" to="/" />

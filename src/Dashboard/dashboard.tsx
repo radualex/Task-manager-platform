@@ -9,13 +9,22 @@ interface DashboardState {
   notification: boolean;
 }
 
-export class Dashboard extends Component<{}, DashboardState> {
+interface DashboardProps {
+  hamburgerClicked: Function;
+}
+
+export class Dashboard extends Component<DashboardProps, DashboardState> {
   readonly state = {
     notification: false,
   };
   _handleNotificationEvent = () => {
     this.setState({ notification: !this.state.notification });
   };
+
+  _handleHamburgerEvent = () => {
+    this.props.hamburgerClicked();
+  };
+
   render() {
     return (
       <div className="dashboard content">
@@ -23,6 +32,7 @@ export class Dashboard extends Component<{}, DashboardState> {
           placeholder={"Global search"}
           notification={this.state.notification}
           notificationClicked={this._handleNotificationEvent}
+          hamburgerClicked={this._handleHamburgerEvent}
         />
         <div className="dashboard__wrapper">
           <Feed />

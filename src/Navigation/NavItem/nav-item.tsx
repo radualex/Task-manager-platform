@@ -17,7 +17,9 @@ interface NavItemState {
 }
 
 export class NavItem extends Component<NavItemProps, NavItemState> {
-  readonly state = { isActive: false };
+  readonly state = {
+    isActive: false,
+  };
 
   render() {
     return (
@@ -28,35 +30,32 @@ export class NavItem extends Component<NavItemProps, NavItemState> {
           className="link"
           activeClassName="selected"
           isActive={(match, location) => {
-            if (location.pathname === this.props.route) {
-              if (!this.state.isActive) {
-                this.setState({ isActive: true });
-              }
-
-              return true;
-            } else {
-              if (this.state.isActive) {
-                this.setState({ isActive: false });
-              }
-              return false;
+            let activeStatus = location.pathname === this.props.route;
+            if (activeStatus !== this.state.isActive) {
+              this.setState({
+                isActive: activeStatus,
+              });
             }
+            return activeStatus;
           }}
         >
           <this.props.logo className="logo" />
           {this.props.name}
         </NavLink>
-        <div className="options">
-          {this.state.isActive
-            ? this.props.options.map((option) => (
-                <Option
-                  key={option.text.toLowerCase()}
-                  color={option.color}
-                  text={option.text}
-                  hash={option.hash}
-                ></Option>
-              ))
-            : ""}
-        </div>
+        {this.state.isActive ? (
+          <div className="options">
+            {this.props.options.map((option) => (
+              <Option
+                key={option.text.toLowerCase()}
+                color={option.color}
+                text={option.text}
+                hash={option.hash}
+              ></Option>
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
