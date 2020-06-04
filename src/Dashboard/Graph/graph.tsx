@@ -4,8 +4,8 @@ import "./graph.scss";
 import { Filter } from "../../Filter/filter";
 import { Separator } from "../../Separator/separator";
 
-import { AreaGraph } from "./Area/area";
-import { DonutGraph } from "./Donut/donut";
+import AreaGraph from "./Area/area";
+import DonutGraph from "./Donut/donut";
 
 interface GraphProps {
   text: string;

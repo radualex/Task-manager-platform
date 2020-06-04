@@ -12,6 +12,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import withResponsiveness, {
+  ResponsivenessProps,
+} from "../../../lib/HOC/withResponsiveness";
 
 // TODO: from props
 const data = [
@@ -21,43 +24,9 @@ const data = [
   { date: "31 Dec", deals: 165 },
 ];
 
-interface AreaGraphState {
-  isMobile?: boolean;
-  isTablet?: boolean;
-  isBigScreen?: boolean;
-}
-
-export class AreaGraph extends Component<{}, AreaGraphState> {
-  readonly state = {
-    isMobile: false,
-    isTablet: false,
-    isBigScreen: false,
-  };
-
-  constructor(props: any) {
-    super(props);
-    this.updatePredicate = this.updatePredicate.bind(this);
-  }
-
-  componentDidMount() {
-    this.updatePredicate();
-    window.addEventListener("resize", this.updatePredicate);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
-  }
-
-  updatePredicate() {
-    this.setState({
-      isMobile: window.innerWidth <= 600,
-      isTablet: window.innerWidth > 600 && window.innerWidth <= 1024,
-      isBigScreen: window.innerWidth >= 2400,
-    });
-  }
-
+class AreaGraph extends Component<ResponsivenessProps> {
   render() {
-    const isBigScreen = this.state.isBigScreen;
+    const isBigScreen = this.props.isBigScreen;
     const leftMargin = isBigScreen ? 0 : -20;
     const bottomMargin = isBigScreen ? 10 : 5;
 
@@ -119,3 +88,5 @@ export class AreaGraph extends Component<{}, AreaGraphState> {
     );
   }
 }
+
+export default withResponsiveness(AreaGraph);

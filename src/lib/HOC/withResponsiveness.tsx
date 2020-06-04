@@ -6,8 +6,9 @@ export interface ResponsivenessProps {
   isBigScreen?: boolean;
 }
 
-// TODO: re-use 
-const withResponsiveness = <P extends ResponsivenessProps>(C: ComponentType<P>) => {
+const withResponsiveness = <P extends ResponsivenessProps>(
+  C: ComponentType<P>
+) => {
   return class withResponsivenessWrapper extends Component<
     P & ResponsivenessProps
   > {

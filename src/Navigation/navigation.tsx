@@ -17,6 +17,7 @@ interface NavigationProps extends ResponsivenessProps {
   showMenu: boolean;
 }
 
+// TODO: add close button for mobile.
 class Navigation extends Component<NavigationProps> {
   render() {
     const isTabletOrMobile = this.props.isTablet || this.props.isMobile;
@@ -61,4 +62,4 @@ class Navigation extends Component<NavigationProps> {
   }
 }
 
-export default withResponsiveness<NavigationProps>(Navigation);
+export default withResponsiveness(Navigation);

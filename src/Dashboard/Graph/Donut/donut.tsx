@@ -11,6 +11,9 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import withResponsiveness, {
+  ResponsivenessProps,
+} from "../../../lib/HOC/withResponsiveness";
 
 // TODO: from props
 const data = [
@@ -19,13 +22,6 @@ const data = [
   { name: "Ended", value: 100 },
 ];
 const COLORS = [colors.secondary1, colors.primary, colors.secondary2];
-
-interface DonutGraphState {
-  activeIndex: number;
-  isMobile?: boolean;
-  isTablet?: boolean;
-  isBigScreen?: boolean;
-}
 
 const renderActiveShape = (props: any) => {
   const {
@@ -64,36 +60,10 @@ const renderActiveShape = (props: any) => {
   );
 };
 
-// TODO: try to make a mixin out of this resize thing, so you can reuse it everywhere is needed.
-export class DonutGraph extends Component<{}, DonutGraphState> {
+class DonutGraph extends Component<ResponsivenessProps> {
   readonly state = {
     activeIndex: 1,
-    isMobile: false,
-    isTablet: false,
-    isBigScreen: false,
   };
-
-  constructor(props: any) {
-    super(props);
-    this.updatePredicate = this.updatePredicate.bind(this);
-  }
-
-  componentDidMount() {
-    this.updatePredicate();
-    window.addEventListener("resize", this.updatePredicate);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
-  }
-
-  updatePredicate() {
-    this.setState({
-      isMobile: window.innerWidth <= 600,
-      isTablet: window.innerWidth > 600 && window.innerWidth <= 1024,
-      isBigScreen: window.innerWidth >= 2400,
-    });
-  }
 
   onPieEnter = (data: any, index: number) => {
     this.setState({
@@ -102,8 +72,8 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
   };
 
   render() {
-    const isBigScreen = this.state.isBigScreen;
-    const isMobile = this.state.isMobile;
+    const isBigScreen = this.props.isBigScreen;
+    const isMobile = this.props.isMobile;
     const cx = isBigScreen ? "30%" : isMobile ? "38%" : "25%";
     const cy = isBigScreen ? "32%" : isMobile ? "50%" : "40%";
     const rightLegend = isBigScreen ? "0" : "1.5rem";
@@ -146,3 +116,5 @@ export class DonutGraph extends Component<{}, DonutGraphState> {
     );
   }
 }
+
+export default withResponsiveness(DonutGraph);
