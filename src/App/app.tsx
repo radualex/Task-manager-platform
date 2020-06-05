@@ -13,15 +13,19 @@ export class App extends Component<{}, AppState> {
     showMenu: false,
   };
 
-  _handleHamburgerClicked = () => {
+  // TODO: this events could use some redux
+  _handleMenuClick = () => {
     this.setState({ showMenu: !this.state.showMenu });
   };
 
   render() {
     return (
       <div className="container">
-        <Navigation showMenu={this.state.showMenu} />
-        <Routes hamburgerClicked={this._handleHamburgerClicked} />
+        <Navigation
+          showMenu={this.state.showMenu}
+          closeEvent={this._handleMenuClick}
+        />
+        <Routes hamburgerClicked={this._handleMenuClick} />
       </div>
     );
   }

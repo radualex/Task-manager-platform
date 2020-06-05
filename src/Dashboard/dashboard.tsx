@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./dashboard.scss";
 
 import { Search } from "../Search/search";
-import { Feed } from "./Feed/feed";
+import Feed from "./Feed/feed";
 import { Graph } from "./Graph/graph";
 
 interface DashboardState {

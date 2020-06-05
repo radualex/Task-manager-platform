@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 import * as moment from "moment";
+import withResponsiveness, {
+  ResponsivenessProps,
+} from "../../lib/HOC/withResponsiveness";
+
 import "./feed.scss";
 
 import { ProgressBar } from "./ProgressBar/progressBar";
@@ -13,8 +17,8 @@ import ProfileLogo from "../../lib/assets/profile.png";
 
 interface FeedState {
   options: Array<string>;
-  completedTasks: number;
-  maximumTasks: number;
+  completedTasks?: number;
+  maximumTasks?: number;
   cardsToShow: number;
   cardsWhenShowMore: number;
   cardData: Array<Object>;
@@ -22,10 +26,10 @@ interface FeedState {
 
 // TODO: data should be obtained from api.
 // TODO: the progress bar needs to be updated based on the data after filter is set.
-export class Feed extends Component<{}, FeedState> {
+class Feed extends Component<ResponsivenessProps, FeedState> {
   readonly state = {
-    completedTasks: 8,
-    maximumTasks: 10,
+    completedTasks: -1,
+    maximumTasks: -1,
     options: ["This week", "Next week", "Next month"],
     cardsToShow: 3,
     cardsWhenShowMore: 3,
@@ -132,6 +136,22 @@ export class Feed extends Component<{}, FeedState> {
     ],
   };
 
+  componentDidMount() {
+    this._calculateTasks();
+  }
+
+  _calculateTasks() {
+    const completedTasks = this.state.cardData.filter(
+      (card) => card.status === "Ended"
+    ).length;
+    const allTasks = this.state.cardData.length;
+
+    this.setState({
+      completedTasks: completedTasks,
+      maximumTasks: allTasks,
+    });
+  }
+
   _calculateProgress() {
     return (this.state.completedTasks / this.state.maximumTasks) * 100;
   }
@@ -151,21 +171,35 @@ export class Feed extends Component<{}, FeedState> {
     });
   };
 
+  _handleDayChanged = (day: string, dayOfWeek: string) => {
+    console.log(day);
+    console.log(dayOfWeek);
+
+    // TODO: filter cardData for 'day'
+  };
+
   render() {
+    const isMobile = this.props.isMobile;
+    const completedTasks = this.state.completedTasks;
+    const allTasks = this.state.maximumTasks;
+    const taskWord = completedTasks === 1 ? "task" : "tasks";
+
     return (
       <div className="feed">
         <div className="feed__progress">
           <div className="feed__header">
             <span className="feed__taskCompleted">
-              {this.state.completedTasks} task completed out of{" "}
-              {this.state.maximumTasks}
+              {isMobile
+                ? `${completedTasks} out of ${allTasks}`
+                : `${completedTasks} ${taskWord} completed out of ${allTasks}`}
             </span>
             <Filter options={this.state.options} />
           </div>
           <ProgressBar progress={this._calculateProgress()} />
           <Moment className="feed__today" format="DD MMM, dddd"></Moment>
         </div>
-        <WeekklyCalendar />
+        {/* TODO: show only todays tasks. */}
+        <WeekklyCalendar dayChanged={this._handleDayChanged} />
         <Separator margin={"0px -1.5rem"} />
         <div className="feed__cards disable-scrollbars">
           {this.state.cardData
@@ -194,3 +228,5 @@ export class Feed extends Component<{}, FeedState> {
     );
   }
 }
+
+export default withResponsiveness(Feed);

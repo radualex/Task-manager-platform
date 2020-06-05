@@ -35,3 +35,12 @@
 .panel__show {
   display: initial;
 }
+
+.nav__header {
+  display: flex;
+  align-items: center;
+
+  .nav__close {
+    margin: 0 1rem 0 auto;
+  }
+}

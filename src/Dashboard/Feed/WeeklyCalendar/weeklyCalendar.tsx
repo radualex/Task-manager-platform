@@ -24,17 +24,26 @@ interface WeekklyCalendarState {
   activeIndex: number;
 }
 
+interface WeeklyCalendarProps {
+  dayChanged: Function;
+}
+
 // TODO: needs props to pass a date from parent and then get the next 6 days and show those (because of the filter)
-/**
- * @event 'day-changed' dispatched when the user clicks on a day. Details: {day, dayOfWeek}
- */
-export class WeekklyCalendar extends Component<{}, WeekklyCalendarState> {
+export class WeekklyCalendar extends Component<
+  WeeklyCalendarProps,
+  WeekklyCalendarState
+> {
   constructor(props: any) {
     super(props);
     this.state = {
       activeIndex: 0,
     };
   }
+
+  _handleClick = (index: number, day: any, dayOfWeek: any) => {
+    this.setState({ activeIndex: index });
+    this.props.dayChanged(day, dayOfWeek);
+  };
 
   render() {
     return (
@@ -45,15 +54,8 @@ export class WeekklyCalendar extends Component<{}, WeekklyCalendarState> {
             className={`currentDay ${
               i === this.state.activeIndex ? "selected" : ""
             }`}
-            onClick={(e) => {
-              this.setState({ activeIndex: i });
-              dispatchEvent(
-                new CustomEvent("day-changed", {
-                  detail: { day, dayOfWeek },
-                  bubbles: false,
-                  cancelable: false,
-                })
-              );
+            onClick={() => {
+              this._handleClick(i, day, dayOfWeek);
             }}
           >
             <span className="dayOfWeek">{dayOfWeek}</span>
