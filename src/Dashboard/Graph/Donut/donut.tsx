@@ -15,12 +15,8 @@ import withResponsiveness, {
   ResponsivenessProps,
 } from "../../../lib/HOC/withResponsiveness";
 
-// TODO: from props
-const data = [
-  { name: "Active", value: 300 },
-  { name: "Completed", value: 650 },
-  { name: "Ended", value: 100 },
-];
+import { Donut } from "../../../Model/donut";
+
 const COLORS = [colors.secondary1, colors.primary, colors.secondary2];
 
 const renderActiveShape = (props: any) => {
@@ -60,7 +56,11 @@ const renderActiveShape = (props: any) => {
   );
 };
 
-class DonutGraph extends Component<ResponsivenessProps> {
+interface DonutProps extends ResponsivenessProps {
+  donutModel: Donut;
+}
+
+class DonutGraph extends Component<DonutProps> {
   readonly state = {
     activeIndex: 1,
   };
@@ -70,6 +70,14 @@ class DonutGraph extends Component<ResponsivenessProps> {
       activeIndex: index,
     });
   };
+
+  _getData() {
+    return [
+      { name: "Active", value: this.props.donutModel.active },
+      { name: "Completed", value: this.props.donutModel.completed },
+      { name: "Ended", value: this.props.donutModel.ended },
+    ];
+  }
 
   render() {
     const isBigScreen = this.props.isBigScreen;
@@ -83,7 +91,7 @@ class DonutGraph extends Component<ResponsivenessProps> {
         <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
           <Pie
             dataKey="value"
-            data={data}
+            data={this._getData()}
             innerRadius={60}
             outerRadius={67}
             paddingAngle={0}
@@ -96,7 +104,7 @@ class DonutGraph extends Component<ResponsivenessProps> {
             blendStroke={true}
             isAnimationActive={true}
           >
-            {data.map((entry, index) => (
+            {this._getData().map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

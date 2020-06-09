@@ -5,6 +5,8 @@ import { Search } from "../Search/search";
 import Feed from "./Feed/feed";
 import { Graph } from "./Graph/graph";
 
+import { cards } from "../lib/data/cards";
+
 interface DashboardState {
   notification: boolean;
 }
@@ -25,6 +27,7 @@ export class Dashboard extends Component<DashboardProps, DashboardState> {
     this.props.hamburgerClicked();
   };
 
+  // TODO: show correct data on graphs.
   render() {
     return (
       <div className="dashboard content">
@@ -35,17 +38,19 @@ export class Dashboard extends Component<DashboardProps, DashboardState> {
           hamburgerClicked={this._handleHamburgerEvent}
         />
         <div className="dashboard__wrapper">
-          <Feed />
+          <Feed cards={cards} />
           <div className="dashboard__graphs">
             <Graph
               options={["This week", "Next week", "Next month"]}
               text={"Deals"}
               type={"area"}
+              cards={cards}
             />
             <Graph
               options={["This week", "Next week", "Next month"]}
               text={"Tasks"}
               type={"donut"}
+              cards={cards}
             />
           </div>
         </div>

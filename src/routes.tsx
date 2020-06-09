@@ -8,11 +8,6 @@ const routes = [
     path: "/",
     component: Dashboard,
   },
-  {
-    path: "/tasks",
-    component: Tasks,
-  },
-
   // TODO: add all routes
 ];
 

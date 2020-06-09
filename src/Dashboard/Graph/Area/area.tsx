@@ -16,15 +16,22 @@ import withResponsiveness, {
   ResponsivenessProps,
 } from "../../../lib/HOC/withResponsiveness";
 
-// TODO: from props
-const data = [
-  { date: "1 Dec", deals: 50 },
-  { date: "8 Dec", deals: 170 },
-  { date: "16 Dec", deals: 65 },
-  { date: "31 Dec", deals: 165 },
-];
+import { Area as AreaModel } from "../../../Model/area";
 
-class AreaGraph extends Component<ResponsivenessProps> {
+interface AreaGraphProps extends ResponsivenessProps {
+  areaModels: [AreaModel];
+}
+
+class AreaGraph extends Component<AreaGraphProps> {
+  _getData() {
+    return this.props.areaModels.map((areaModel) => {
+      return {
+        date: areaModel.getDateAsString(),
+        deals: areaModel.deals,
+      };
+    });
+  }
+
   render() {
     const isBigScreen = this.props.isBigScreen;
     const leftMargin = isBigScreen ? 0 : -20;
@@ -33,7 +40,7 @@ class AreaGraph extends Component<ResponsivenessProps> {
     return (
       <ResponsiveContainer width="99%" aspect={isBigScreen ? 1 : 1.7}>
         <AreaChart
-          data={data}
+          data={this._getData()}
           margin={{ top: 20, right: 5, left: leftMargin, bottom: bottomMargin }}
         >
           <defs>
