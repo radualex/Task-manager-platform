@@ -27,11 +27,16 @@
 
     .day {
       padding: 0.4rem;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media (min-width: $breakpoint-bigscreen) {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }

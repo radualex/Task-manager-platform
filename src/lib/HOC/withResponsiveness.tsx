@@ -35,7 +35,7 @@ const withResponsiveness = <P extends ResponsivenessProps>(
     updatePredicate = () => {
       this.setState({
         isMobile: window.innerWidth <= 600,
-        isTablet: window.innerWidth > 600 && window.innerWidth <= 1024,
+        isTablet: window.innerWidth > 600 && window.innerWidth <= 1248,
         isBigScreen: window.innerWidth >= 2400,
       });
     };

@@ -82,8 +82,22 @@ class DonutGraph extends Component<DonutProps> {
   render() {
     const isBigScreen = this.props.isBigScreen;
     const isMobile = this.props.isMobile;
-    const cx = isBigScreen ? "30%" : isMobile ? "38%" : "25%";
-    const cy = isBigScreen ? "32%" : isMobile ? "50%" : "40%";
+    const isTablet = this.props.isTablet;
+    console.log(isBigScreen);
+    const cx = isBigScreen
+      ? "30%"
+      : isMobile
+      ? "38%"
+      : isTablet
+      ? "30%"
+      : "25%";
+    const cy = isBigScreen
+      ? "32%"
+      : isMobile
+      ? "50%"
+      : isTablet
+      ? "50%"
+      : "40%";
     const rightLegend = isBigScreen ? "0" : "1.5rem";
 
     return (
