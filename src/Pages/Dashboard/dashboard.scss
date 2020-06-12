@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+.dashboard {
+  overflow-y: scroll; // TODO: I should disable. everything should fit in the screen.
+  .dashboard__wrapper {
+    grid-auto-flow: column;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: calc(100vh - 48px); // due to the searchbar. otherwise you overflow
+
+    .dashboard__graphs {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-rows: 50%;
+      grid-row-gap: 1.5rem;
+      margin: 1.5rem 1.5rem 1.5rem 0;
+
+      @media (max-width: $breakpoint-tablet) {
+        margin: 1.5rem;
+        padding: 0;
+      }
+    }
+
+    @media (min-width: $breakpoint-bigscreen) {
+      margin: 0 20%;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      grid-auto-flow: row;
+      grid-template-columns: none;
+    }
+  }
+}

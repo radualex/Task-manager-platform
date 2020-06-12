@@ -1,9 +1,14 @@
 @import "../variables.scss";
 
+:root {
+  --vh: 1vh;
+}
+
 .container {
   display: flex;
   flex-direction: row;
-  min-height: -webkit-fill-available;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
   max-width: 100vw;
   overflow-x: hidden;
   position: absolute;
@@ -13,9 +18,9 @@
   bottom: 0;
   overflow: hidden;
 
-  @media only screen and (max-width: $breakpoint-tablet) {
-    min-height: 100%;
-  }
+  // @media only screen and (max-width: $breakpoint-tablet) {
+  //   min-height: 100%;
+  // }
 
   .content {
     width: -webkit-fill-available;

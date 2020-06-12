@@ -1,0 +1,29 @@
+@import "../../../variables.scss";
+$size: 1rem;
+$hoverColor: map-get($colors, neutral4);
+
+.link {
+  color: map-get($colors, neutral5);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  .logo {
+    width: $size;
+    height: $size;
+    margin: 0 1rem 0 0;
+  }
+}
+
+.link:hover {
+  color: $hoverColor;
+}
+
+.selected {
+  color: $hoverColor;
+}
+
+.options {
+  display: grid;
+  grid-row-gap: 0.2rem;
+}

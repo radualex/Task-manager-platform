@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.filter {
+  display: flex;
+  color: map-get($colors, neutral3);
+
+  .filter__label {
+    margin: 0 0.2rem 0 0;
+  }
+}

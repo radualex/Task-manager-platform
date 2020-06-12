@@ -1,0 +1,66 @@
+@import "../../variables.scss";
+$arrowSize: 4px;
+
+.dropdown {
+  color: map-get($colors, primary);
+  cursor: pointer;
+  position: relative;
+  transition: all 200ms ease;
+  display: flex;
+}
+
+.dropdown__arrow {
+  display: flex;
+  align-items: center;
+  border-color: map-get($colors, neutral5) transparent transparent;
+  border-style: solid;
+  border-width: $arrowSize $arrowSize 0;
+  content: " ";
+  height: 0;
+  width: 0;
+  margin: 0 0 0 0.5rem;
+}
+
+.dropdown__control {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.dropdown__menu {
+  background-color: map-get($colors, neutral4);
+  border: 0.05rem solid #ccc;
+  border-radius: 5px;
+  margin-top: 2px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+
+  .Dropdown-option {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    color: map-get($colors, primary);
+    white-space: nowrap;
+
+    &:hover {
+      background-color: map-get($colors, neutral7);
+    }
+  }
+}
+
+.dropdown__placeholder {
+  white-space: nowrap;
+}
+
+.Dropdown-arrow-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.is-open .Dropdown-arrow {
+  border-color: transparent transparent map-get($colors, neutral5);
+  border-width: 0 $arrowSize $arrowSize;
+}

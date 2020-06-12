@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./app.scss";
 import { Routes } from "../routes";
 
-import Navigation from "../Navigation/navigation";
+import Navigation from "../Components/Navigation/navigation";
 
 interface AppState {
   showMenu: boolean;
@@ -13,7 +13,21 @@ export class App extends Component<{}, AppState> {
     showMenu: false,
   };
 
-  // TODO: this events could use some redux
+  constructor(props: any) {
+    super(props);
+    this._updatePredicate = this._updatePredicate.bind(this);
+  }
+
+  componentDidMount() {
+    this._updatePredicate();
+    window.addEventListener("resize", this._updatePredicate);
+  }
+
+  _updatePredicate() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
   _handleMenuClick = () => {
     this.setState({ showMenu: !this.state.showMenu });
   };

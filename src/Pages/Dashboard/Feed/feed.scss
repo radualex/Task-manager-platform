@@ -1,0 +1,81 @@
+@import "../../../variables.scss";
+
+.feed {
+  -moz-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+  -webkit-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+  box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+
+  display: table;
+  border-radius: 1rem;
+  margin: 1.5rem;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  height: calc(100vh - 100px);
+
+  div {
+    text-align: left;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    margin: 1.5rem 1.5rem 0 1.5rem;
+    height: auto;
+  }
+
+  .feed__cards {
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content);
+    margin: 1rem 0;
+    height: calc(100vh - 340px);
+    overflow-y: auto;
+
+    @media (min-width: $breakpoint-bigscreen) {
+      height: calc(100vh - 400px);
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      height: 29vh;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      height: 50vh;
+    }
+  }
+
+  .feed__header {
+    display: flex;
+
+    .feed__taskCompleted {
+      width: 100%;
+      font-weight: 600;
+      color: map-get($colors, primary);
+    }
+  }
+
+  .feed__today {
+    font-weight: 600;
+  }
+
+  .feed__more {
+    color: map-get($colors, primary);
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+      color: map-get($colors, neutral6);
+    }
+
+    &:active {
+      cursor: pointer;
+      color: map-get($colors, secondary2);
+    }
+  }
+}
+
+.disable-scrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
+  }
+}

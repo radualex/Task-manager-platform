@@ -1,0 +1,19 @@
+@import "../../../variables.scss";
+
+.graph {
+  -moz-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+  -webkit-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+  box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
+
+  border-radius: 1rem;
+
+  padding: 1rem 1.5rem;
+
+  .graph__header {
+    display: flex;
+
+    .graph__header__text {
+      width: 100%;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "include": ["src/components", "custom.d.ts"],
+  "include": ["src", "custom.d.ts"],
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,

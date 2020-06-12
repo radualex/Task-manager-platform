@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Dashboard } from "./Dashboard/dashboard";
-import { Tasks } from "./Tasks/tasks";
+import { Dashboard } from "./Pages/Dashboard/dashboard";
 
 const routes = [
   {

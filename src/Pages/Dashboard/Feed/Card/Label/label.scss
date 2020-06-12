@@ -1,0 +1,13 @@
+@import "../../../../../variables.scss";
+
+.card__label {
+  padding: 0.3rem 0.6rem;
+  width: 120px;
+  border-radius: 5px;
+  text-align: center;
+  color: map-get($colors, neutral4);
+
+  @media (min-width: $breakpoint-bigscreen) {
+    width: 150px;
+  }
+}
