@@ -48,7 +48,8 @@
     "build": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server --port 8080",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "ngrok http --host-header=rewrite 8080"
   },
   "author": "radu.stoica1994@gmail.com",
   "eslintConfig": {

@@ -27,7 +27,6 @@ export class Dashboard extends Component<DashboardProps, DashboardState> {
     this.props.hamburgerClicked();
   };
 
-  // TODO: show correct data on graphs.
   render() {
     return (
       <div className="dashboard content">

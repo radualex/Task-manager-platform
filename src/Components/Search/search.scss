@@ -61,6 +61,7 @@ $size: 20px;
     margin: 0 0 0 0.5rem;
     width: 100%;
     color: map-get($colors, neutral3);
+    -webkit-appearance: none; // Safari
 
     &:focus {
       outline: none;

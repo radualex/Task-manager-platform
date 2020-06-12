@@ -3,10 +3,13 @@
 .dashboard {
   overflow-y: scroll; // TODO: I should disable. everything should fit in the screen.
   .dashboard__wrapper {
-    grid-auto-flow: column;
-    display: grid;
-    grid-template-columns: 60% 40%;
-    height: calc(100vh - 48px); // due to the searchbar. otherwise you overflow
+    @supports (display: grid) {
+      grid-auto-flow: column;
+      display: grid;
+      grid-template-columns: 60% 40%;
+    }
+
+    height: auto;
 
     .dashboard__graphs {
       display: grid;
