@@ -4,11 +4,15 @@
   --vh: 1vh;
 }
 
+@function vh($quantity) {
+  @return calc(var(--vh, 1vh) * #{$quantity});
+}
+
 .container {
   display: flex;
   flex-direction: row;
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  height: vh(100);
   max-width: 100vw;
   overflow-x: hidden;
   position: absolute;
@@ -18,9 +22,9 @@
   bottom: 0;
   overflow: hidden;
 
-  // @media only screen and (max-width: $breakpoint-tablet) {
-  //   min-height: 100%;
-  // }
+  @media only screen and (max-width: $breakpoint-tablet) {
+    overflow: auto;
+  }
 
   .content {
     width: -webkit-fill-available;

@@ -6,6 +6,7 @@ $size: 20px;
   align-items: center;
   height: calc(16px + 2rem);
   background: map-get($colors, neutral4);
+  padding: 1rem 0;
 
   -moz-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);
   -webkit-box-shadow: 0px 2px 5px 0px map-get($colors, neutral5);

@@ -24,7 +24,7 @@ export class App extends Component<{}, AppState> {
   }
 
   _updatePredicate() {
-    let vh = window.innerHeight * 0.01;
+    let vh = window.innerHeight / 100;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 

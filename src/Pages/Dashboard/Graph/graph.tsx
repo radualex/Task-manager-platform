@@ -62,8 +62,9 @@ export class Graph extends Component<GraphProps, GraphState> {
   }
 
   render() {
+    const classType = this.props.type === "area" ? "area" : "donut";
     return (
-      <div className="graph">
+      <div className={`graph ${classType}`}>
         <div className="graph__header">
           <h1 className="graph__header__text">{this.props.text}</h1>
           <Filter options={this.props.options} />

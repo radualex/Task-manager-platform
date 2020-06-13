@@ -1,7 +1,6 @@
 @import "../../variables.scss";
 
 .dashboard {
-  overflow-y: scroll; // TODO: I should disable. everything should fit in the screen.
   .dashboard__wrapper {
     @supports (display: grid) {
       grid-auto-flow: column;
