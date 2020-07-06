@@ -1,4 +1,4 @@
-# Task-manager-platform
+# Task manager platform
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7e389998-c1f3-4ea1-b23a-004a676e9e1f/deploy-status)](https://app.netlify.com/sites/taskmanager-radu/deploys)
 
 [Live demo](https://taskmanager-radu.netlify.app)
